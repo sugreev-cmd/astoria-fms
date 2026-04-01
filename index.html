@@ -161,8 +161,8 @@ input,select,textarea,button{font-family:'Outfit',sans-serif}
 .date-filter-box input[type=date]{background:none;border:none;outline:none;color:var(--text);font-size:12px;cursor:pointer;width:115px;font-family:'Outfit',sans-serif}
 .date-clear-btn{padding:4px 9px;border:1.5px solid rgba(220,38,38,.3);background:var(--red-bg);color:var(--red);border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Outfit',sans-serif}
 .date-clear-btn:hover{background:var(--red);color:#fff}
-.date-active-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:var(--blue-bg);border:1px solid rgba(37,99,235,.2);border-radius:20px;font-size:10px;color:var(--blue);font-weight:600}
-.date-active-tag button{background:none;border:none;cursor:pointer;color:var(--blue);font-size:14px;line-height:1;padding:0 0 0 2px}
+.date-active-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:var(--orange-bg);border:1px solid rgba(217,119,6,.2);border-radius:20px;font-size:10px;color:var(--orange);font-weight:600}
+.date-active-tag button{background:none;border:none;cursor:pointer;color:var(--orange);font-size:14px;line-height:1;padding:0 0 0 2px}
 /* ── END DATE FILTER ── */
 
 .ft{display:flex;gap:5px;flex-wrap:wrap;flex:1}
@@ -382,20 +382,19 @@ td{padding:10px 12px;vertical-align:middle}
           <div class="fc fc6"><div class="fc-lbl">Overdue</div><div class="fc-val" id="f-s5">0</div><div class="fc-sub dn" id="f-s5s">—</div></div>
         </div>
 
-        <!-- TOOLBAR WITH DATE FILTER -->
+        <!-- TOOLBAR WITH NEXT ACTION DATE FILTER -->
         <div class="toolbar">
           <div class="sbox">
             <span style="color:var(--dim);font-size:14px">🔍</span>
             <input id="srch" placeholder="Search name, phone, requirement...">
           </div>
 
-          <!-- DATE FILTER BOX -->
+          <!-- NEXT ACTION DATE FILTER -->
           <div class="date-filter-box">
-            <span style="color:var(--dim);font-size:13px">📅</span>
-            <label>From</label>
+            <span style="color:var(--orange);font-size:13px">🔔</span>
+            <label style="color:var(--orange)">Next Action</label>
             <input type="date" id="dateFrom" onchange="renderTable()">
             <span style="font-size:11px;color:var(--dim);padding:0 2px">—</span>
-            <label>To</label>
             <input type="date" id="dateTo" onchange="renderTable()">
             <button class="date-clear-btn" onclick="clearDateFilter()">✕ Clear</button>
           </div>
@@ -413,11 +412,11 @@ td{padding:10px 12px;vertical-align:middle}
           <button class="add-btn-t" id="addBtnT">+ Add Lead</button>
         </div>
 
-        <!-- ACTIVE DATE TAG -->
+        <!-- ACTIVE NEXT ACTION DATE TAG -->
         <div id="dateActiveTag" style="display:none;margin-bottom:8px">
           <span class="date-active-tag">
-            📅 <span id="dateTagText"></span>
-            <button onclick="clearDateFilter()" title="Clear date filter">✕</button>
+            🔔 Next Action: <span id="dateTagText"></span>
+            <button onclick="clearDateFilter()" title="Clear filter">✕</button>
           </span>
         </div>
 
@@ -462,24 +461,12 @@ td{padding:10px 12px;vertical-align:middle}
         <div class="fg"><label class="fl">Requirement *</label>
           <select class="fs" id="a-req">
             <option value="">Select...</option>
-            <optgroup label="Modular">
-              <option>Kitchen</option><option>Wardrobe</option><option>Kitchen &amp; Wardrobe</option><option>TV Unit</option><option>Study Unit</option>
-            </optgroup>
-            <optgroup label="Full Interior">
-              <option>Full Home Interior</option><option>Living Room</option><option>Bedroom</option><option>Master Bedroom</option><option>Kids Room</option>
-            </optgroup>
-            <optgroup label="Commercial">
-              <option>Office Interior</option><option>Showroom / Retail</option><option>Restaurant / Cafe</option>
-            </optgroup>
-            <optgroup label="Renovation">
-              <option>Renovation (Partial)</option><option>Renovation (Full)</option><option>False Ceiling</option><option>Flooring</option>
-            </optgroup>
-            <optgroup label="Loose Furniture">
-              <option>Sofa Set</option><option>Dining Table &amp; Chairs</option><option>Bed &amp; Mattress</option><option>Coffee Table</option><option>Wardrobe (Loose)</option><option>Study Table &amp; Chair</option><option>Shoe Rack</option><option>Other Loose Furniture</option>
-            </optgroup>
-            <optgroup label="Soft Furnishing">
-              <option>Curtains &amp; Blinds</option><option>Wallpaper</option><option>Cushions &amp; Covers</option><option>Bed Linen</option><option>Rugs &amp; Carpets</option><option>Other Soft Furnishing</option>
-            </optgroup>
+            <optgroup label="Modular"><option>Kitchen</option><option>Wardrobe</option><option>Kitchen &amp; Wardrobe</option><option>TV Unit</option><option>Study Unit</option></optgroup>
+            <optgroup label="Full Interior"><option>Full Home Interior</option><option>Living Room</option><option>Bedroom</option><option>Master Bedroom</option><option>Kids Room</option></optgroup>
+            <optgroup label="Commercial"><option>Office Interior</option><option>Showroom / Retail</option><option>Restaurant / Cafe</option></optgroup>
+            <optgroup label="Renovation"><option>Renovation (Partial)</option><option>Renovation (Full)</option><option>False Ceiling</option><option>Flooring</option></optgroup>
+            <optgroup label="Loose Furniture"><option>Sofa Set</option><option>Dining Table &amp; Chairs</option><option>Bed &amp; Mattress</option><option>Coffee Table</option><option>Wardrobe (Loose)</option><option>Study Table &amp; Chair</option><option>Shoe Rack</option><option>Other Loose Furniture</option></optgroup>
+            <optgroup label="Soft Furnishing"><option>Curtains &amp; Blinds</option><option>Wallpaper</option><option>Cushions &amp; Covers</option><option>Bed Linen</option><option>Rugs &amp; Carpets</option><option>Other Soft Furnishing</option></optgroup>
             <option>Other</option>
           </select>
         </div>
@@ -520,16 +507,10 @@ td{padding:10px 12px;vertical-align:middle}
 <div class="toast" id="toast"></div>
 
 <script>
-var SUPABASE_URL = 'https://duckuubnszaytuuerffx.supabase.co';
-var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1Y2t1dWJuc3pheXR1dWVyZmZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MjQ4NDMsImV4cCI6MjA4OTQwMDg0M30.Aoesp7WobjoyvQWFIIZkDpE0JIcvnX9lLlLihK0byLE';
-var API = SUPABASE_URL + '/rest/v1';
-var HEADERS = {
-  'Content-Type': 'application/json',
-  'apikey': SUPABASE_KEY,
-  'Authorization': 'Bearer ' + SUPABASE_KEY,
-  'Prefer': 'return=representation'
-};
-
+var SUPABASE_URL='https://duckuubnszaytuuerffx.supabase.co';
+var SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1Y2t1dWJuc3pheXR1dWVyZmZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MjQ4NDMsImV4cCI6MjA4OTQwMDg0M30.Aoesp7WobjoyvQWFIIZkDpE0JIcvnX9lLlLihK0byLE';
+var API=SUPABASE_URL+'/rest/v1';
+var HEADERS={'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Prefer':'return=representation'};
 var PASSWORDS={owner:'astoria@owner',bdm1:'astoria@bdm1',bdm2:'astoria@bdm2',bdm3:'astoria@bdm3',crm:'astoria@crm',pc:'astoria@pc'};
 var ROLE_LABELS={owner:'👑 Owner',bdm1:'💼 BDM 1',bdm2:'💼 BDM 2',bdm3:'💼 BDM 3',crm:'🎯 CRM',pc:'📋 PC'};
 var READ_ONLY=['pc'];
@@ -549,6 +530,26 @@ function isOverdue(l){if(!l.pipeline)return false;var p=l.pipeline,n=today();if(
 function isDueToday(l){if(!l.pipeline)return false;var p=l.pipeline,n=today();return(p.stage==='fu1'&&p.fu1.planned===n)||(p.stage==='fu2'&&p.fu2.planned===n)||(p.stage==='fu3'&&p.fu3.planned===n)||(p.stage==='meeting'&&p.meeting.planned===n);}
 function stageLabel(s){return{fu1:'Follow-up 1',fu2:'Follow-up 2',fu3:'Follow-up 3',meeting:'Meeting',quotation:'Quotation',advance:'Advance Rcvd',lost:'Lost'}[s]||s;}
 function stageClass(s){return{fu1:'s-fu1',fu2:'s-fu2',fu3:'s-fu3',meeting:'s-meet',quotation:'s-quot',advance:'s-adv',lost:'s-lost'}[s]||'s-fu1';}
+
+/* ══ NEXT ACTION DATE HELPER ══
+   Returns YYYY-MM-DD string for the next action date of a lead.
+   fu1 → fu1.planned
+   fu2 → fu2.planned
+   fu3 → fu3.planned
+   meeting → confirmedDate || planned
+   quotation / advance / lost → no date (return '')
+*/
+function getNextActionDate(l){
+  if(!l.pipeline)return'';
+  var p=l.pipeline,s=p.stage;
+  if(s==='fu1')return p.fu1.planned||'';
+  if(s==='fu2')return p.fu2.planned||'';
+  if(s==='fu3')return p.fu3.planned||'';
+  if(s==='meeting')return p.meeting.confirmedDate||p.meeting.planned||'';
+  return'';
+}
+/* ══ END HELPER ══ */
+
 function nextAction(l){var p=l.pipeline;if(!p)return'—';if(p.stage==='fu1')return'📞 '+fmtDate(p.fu1.planned);if(p.stage==='fu2')return'📲 '+fmtDate(p.fu2.planned);if(p.stage==='fu3')return'🔔 '+fmtDate(p.fu3.planned);if(p.stage==='meeting')return'🤝 '+(p.meeting.confirmedDate?fmtDate(p.meeting.confirmedDate):p.meeting.planned?fmtDate(p.meeting.planned):'TBD');if(p.stage==='quotation')return'📄 Quotation Sent';if(p.stage==='advance')return'✅ Converted';if(p.stage==='lost')return'❌ Lost';return'—';}
 function ltBadge(t){if(!t||t==='Direct Client')return'<span class="lt-badge lt-d">Direct</span>';if(t.indexOf('Consultancy')>-1)return'<span class="lt-badge lt-c">Consultancy</span>';if(t.indexOf('Architect')>-1)return'<span class="lt-badge lt-a">Architect</span>';if(t.indexOf('Runner')>-1)return'<span class="lt-badge lt-r">Runner</span>';return'<span class="lt-badge lt-d">'+t+'</span>';}
 function getVis(){if(currentRole==='owner')return leads;if(currentRole==='pc')return leads;if(currentRole==='crm')return leads.filter(function(l){return l.assigned_role==='crm';});return leads.filter(function(l){return l.assigned_role===currentRole;});}
@@ -584,7 +585,7 @@ function buildMIS(){var tm={};leads.forEach(function(l){var e=l.exec||'Unassigne
 
 function setF(f,btn){activeFilt=f;document.querySelectorAll('#view-fms .fb').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');renderTable();}
 
-/* ══ DATE FILTER FUNCTIONS ══ */
+/* ══ NEXT ACTION DATE FILTER FUNCTIONS ══ */
 function clearDateFilter(){
   var df=document.getElementById('dateFrom'),dt=document.getElementById('dateTo');
   if(df)df.value='';
@@ -598,30 +599,35 @@ function renderTable(){
   var from=document.getElementById('dateFrom')?document.getElementById('dateFrom').value:'';
   var to=document.getElementById('dateTo')?document.getElementById('dateTo').value:'';
 
-  // Show/hide active date tag
+  // Active tag update
   var tag=document.getElementById('dateActiveTag');
   var tagTxt=document.getElementById('dateTagText');
   if(tag){
     if(from||to){
       tag.style.display='block';
-      var fromTxt=from?fmtDate(from):'';
-      var toTxt=to?fmtDate(to):'';
-      if(from&&to)tagTxt.textContent='From: '+fromTxt+' — To: '+toTxt;
-      else if(from)tagTxt.textContent='From: '+fromTxt;
-      else tagTxt.textContent='To: '+toTxt;
-    } else {
-      tag.style.display='none';
-    }
+      if(from&&to)tagTxt.textContent=fmtDate(from)+' — '+fmtDate(to);
+      else if(from)tagTxt.textContent='From '+fmtDate(from);
+      else tagTxt.textContent='Till '+fmtDate(to);
+    }else{tag.style.display='none';}
   }
 
   var data=vis.filter(function(l){
+    // Stage filter
     if(activeFilt!=='All'&&l.pipeline&&l.pipeline.stage!==activeFilt)return false;
+    // Search filter
     if(q){var s=(l.name+' '+l.phone+' '+(l.loc||'')+' '+(l.exec||'')+' '+(l.req||'')+' '+(l.leadtype||'')).toLowerCase();if(s.indexOf(q)<0)return false;}
-    if(from&&l.date&&l.date<from)return false;
-    if(to&&l.date&&l.date>to)return false;
+    // ── NEXT ACTION DATE FILTER ──
+    if(from||to){
+      var nad=getNextActionDate(l); // YYYY-MM-DD or ''
+      // Agar lead ka next action date nahi hai (converted/lost) toh filter se exclude karo
+      if(!nad)return false;
+      if(from&&nad<from)return false;
+      if(to&&nad>to)return false;
+    }
+    // ── END NEXT ACTION DATE FILTER ──
     return true;
   });
-/* ══ END DATE FILTER ══ */
+/* ══ END FILTER ══ */
 
   var empty=document.getElementById('emptyDiv'),tbl=document.getElementById('tbl');
   if(!data.length){empty.style.display='block';tbl.style.display='none';updateFMSStats();return;}
