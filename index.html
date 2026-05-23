@@ -685,6 +685,23 @@ function markQuotDone(){var l=getLead();if(!l)return;['value','sentDate','ref','
 function saveAdvData(){var l=getLead();if(!l)return;var el1=document.getElementById('adv-amt'),el2=document.getElementById('adv-date'),el3=document.getElementById('adv-rev'),el4=document.getElementById('adv-nt');if(el1)l.pipeline.advance.amount=el1.value;if(el2)l.pipeline.advance.date=el2.value;if(el3)l.pipeline.advance.revenue=el3.value;if(el4)l.pipeline.advance.notes=el4.value;savePipe(function(){showToast('✓ Order saved','s');openPipeline(viewingId);});}
 function saveLostData(){var l=getLead();if(!l)return;var el1=document.getElementById('lost-r'),el2=document.getElementById('lost-d');if(el1)l.pipeline.lostReason=el1.value;if(el2)l.pipeline.lostDate=el2.value;savePipe(function(){showToast('✓ Saved','s');});}
 function reactivate(){var l=getLead();if(!l)return;l.pipeline.stage='fu1';l.pipeline.fu1.planned=today();l.pipeline.fu1.status='pending';savePipe(function(){buildAll();showToast('♻ Lead re-activated','i');openPipeline(viewingId);});}
+function confirmFU3DateChange(){
+  var l=getLead(); if(!l)return;
+  var cn=document.getElementById('cnd-fu3');
+  var nd=cn?cn.value:'';
+  if(!nd){showToast('⚠ Please select a Client Next Date first','e');return;}
+  var ntEl=document.getElementById('nt-fu3');
+  if(ntEl)l.pipeline.fu3.notes=ntEl.value;
+  l.pipeline.fu3.planned=nd;
+  l.pipeline.fu3.status='pending';
+  l.pipeline.fu3.actual='';
+  l.pipeline.stage='fu3';
+  savePipe(function(){
+    buildAll();
+    showToast('✓ FU3 date updated to: '+fmtDate(nd),'s');
+    openPipeline(viewingId);
+  });
+}
 function doDeleteLead(){if(!confirm('Delete this lead permanently?'))return;deleteLead_db(viewingId,function(err){if(err){showToast('Delete failed','e');return;}leads=leads.filter(function(l){return l.id!==viewingId;});closeMo('pipeMo');buildAll();showToast('🗑 Lead deleted','e');});}
 function openEditFromPipe(){var l=getLead();closeMo('pipeMo');setTimeout(function(){openAdd(l);},100);}
 function toggleStep(head){head.closest('.step-card').classList.toggle('open');}
