@@ -285,6 +285,141 @@ td{padding:10px 12px;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:1200px){.kpi-grid,.fms-stats{grid-template-columns:repeat(3,1fr)}.dg3{grid-template-columns:1fr 1fr}.mis-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.kpi-grid,.fms-stats{grid-template-columns:repeat(2,1fr)}.dg2,.dg3,.dg32{grid-template-columns:1fr}.date-filter-box{flex-wrap:wrap}.date-filter-box input[type=date]{width:100px}}
+  /* ═══════════════════════════════════════
+   MOBILE RESPONSIVE — Phone Layout
+   ═══════════════════════════════════════ */
+.mob-nav { display: none; }
+
+@media (max-width: 768px) {
+
+  /* ── Login Card ── */
+  #loginPage { padding: 16px; }
+  .login-card { width: 100%; max-width: 420px; padding: 28px 18px 22px; border-radius: 14px; }
+  .l-brand-icon { width: 46px; height: 46px; font-size: 20px; }
+  .l-brand-name { font-size: 18px; }
+  .role-grid { grid-template-columns: repeat(2, 1fr); gap: 7px; }
+  .role-btn { padding: 12px 6px; }
+  .role-icon { font-size: 20px; }
+  .role-name { font-size: 10px; }
+
+  /* ── Topbar ── */
+  .topbar { padding: 0 12px; height: 48px; }
+  .tb-nav { display: none !important; }
+  .tb-brand-name { font-size: 13px; }
+  .tb-brand-icon { width: 28px; height: 28px; font-size: 14px; }
+  .tb-right { gap: 4px; }
+  .tb-pill.today, .tb-pill.role { display: none; }
+  .tb-pill.alert { font-size: 9px; padding: 4px 7px; }
+  .add-pill { padding: 6px 10px; font-size: 10px; }
+  .logout-btn { display: none; }
+
+  /* ── Mobile Bottom Nav ── */
+  .mob-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    background: var(--nav);
+    border-top: 2px solid rgba(255,255,255,.1);
+    height: 58px;
+    align-items: stretch;
+  }
+  .mob-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 700;
+    color: rgba(255,255,255,.45);
+    border: none;
+    background: none;
+    transition: all .18s;
+    padding: 0 2px;
+    border-top: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+  }
+  .mob-nav-item.active { color: #fff; border-top-color: var(--gold); }
+  .mob-nav-item:hover { color: rgba(255,255,255,.8); }
+  .mob-nav-icon { font-size: 19px; line-height: 1; }
+
+  /* ── App body padding for bottom nav ── */
+  .app-content { padding-bottom: 62px; }
+  #appPage { overflow: unset; }
+
+  /* ── Section wrap ── */
+  .section-wrap { padding: 12px 10px; }
+
+  /* ── KPI already handled by existing CSS ── */
+  .kpi-val { font-size: 28px; }
+  .kpi-lbl { font-size: 8px; }
+
+  /* ── Toolbar (FMS view) ── */
+  .toolbar { flex-wrap: wrap; gap: 5px; }
+  .sbox { min-width: 100%; }
+  .date-filter-box { flex-wrap: wrap; gap: 4px; width: 100%; }
+  .date-filter-box input[type=date] { width: 110px; }
+  .ft { gap: 4px; }
+  .fb { padding: 5px 9px; font-size: 10px; }
+  .add-btn-t { margin-left: 0; }
+
+  /* ── MIS stats grid ── */
+  .mis-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .mis-val { font-size: 28px; }
+
+  /* ── PC steps ── */
+  .pc-step-info { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* ── Pipeline step grids ── */
+  .sbrow { grid-template-columns: 1fr 1fr !important; }
+  .sbrow.three { grid-template-columns: 1fr !important; }
+  .sbrow.full { grid-template-columns: 1fr !important; }
+  .sbrow.two { grid-template-columns: 1fr !important; }
+
+  /* ── Modals ── */
+  .md { width: calc(100vw - 16px); max-height: 95vh; border-radius: 12px; }
+  .md.xl { width: calc(100vw - 16px); }
+  .mh { padding: 12px 14px 10px; border-radius: 12px 12px 0 0; }
+  .mb { padding: 14px; }
+  .mf { padding: 10px 14px; gap: 5px; flex-wrap: wrap; }
+  .mf button { flex: 1; min-width: 80px; padding: 8px 10px; font-size: 11px; }
+  .fr { grid-template-columns: 1fr !important; }
+  .fr.t3 { grid-template-columns: 1fr !important; }
+
+  /* ── Meet result ── */
+  .meet-result { flex-direction: column; }
+
+  /* ── Decision buttons ── */
+  .dec-btns { flex-direction: column; }
+  .dbtn { width: 100%; }
+
+  /* ── Sync dot & Toast ── */
+  .sync-dot { bottom: 66px; right: 10px; font-size: 9px; padding: 5px 9px; }
+  .toast { bottom: 68px; font-size: 11px; }
+
+  /* ── PC card ── */
+  .pc-card-head { flex-direction: column; align-items: flex-start; }
+  .pc-card-right { flex-wrap: wrap; }
+
+  /* ── Revenue grid ── */
+  .rev-grid { grid-template-columns: 1fr 1fr; }
+  .rev-main { font-size: 30px; }
+
+  /* ── Pipeline header ── */
+  .pipe-hdr { flex-direction: column; }
+  .ph-meta { flex-wrap: wrap; gap: 6px; }
+}
+
+/* ── Tablet (769–1200px) ── */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .tb-ni { padding: 0 10px; font-size: 11px; }
+  .tb-right { gap: 5px; }
+  .tb-pill.role { display: none; }
+}
 </style>
 </head>
 <body>
