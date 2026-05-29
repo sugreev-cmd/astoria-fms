@@ -872,5 +872,26 @@ window.onload=function(){
   if(saved&&PASSWORDS[saved]){currentRole=saved;enterApp();}
 };
 </script>
+  <!-- MOBILE BOTTOM NAV -->
+<div class="mob-nav" id="mobNav" style="display:none">
+  <button class="mob-nav-item active" id="mn-dash" onclick="mobGo('dash',this)">
+    <span class="mob-nav-icon">📊</span><span>Dashboard</span>
+  </button>
+  <button class="mob-nav-item" id="mn-mis" onclick="mobGo('mis',this)">
+    <span class="mob-nav-icon">📈</span><span>MIS</span>
+  </button>
+  <button class="mob-nav-item" id="mn-fms" onclick="mobGo('fms',this)">
+    <span class="mob-nav-icon">📋</span><span>Leads</span>
+  </button>
+  <button class="mob-nav-item" id="mn-pc" style="display:none" onclick="mobGo('pc',this)">
+    <span class="mob-nav-icon">📌</span><span>PC</span>
+  </button>
+  <button class="mob-nav-item" id="mn-add" onclick="openAdd(null)">
+    <span class="mob-nav-icon">➕</span><span>Add</span>
+  </button>
+  <button class="mob-nav-item" onclick="doLogout()">
+    <span class="mob-nav-icon">🚪</span><span>Logout</span>
+  </button>
+</div>
 </body>
 </html>
