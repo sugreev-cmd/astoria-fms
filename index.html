@@ -870,6 +870,48 @@ window.onload=function(){
   document.querySelectorAll('.mo').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o)o.classList.remove('open');});});
   var saved=sessionStorage.getItem('al_role');
   if(saved&&PASSWORDS[saved]){currentRole=saved;enterApp();}
+  // ── Mobile Nav Setup ──
+  function mobGo(v, el) {
+    showView(v);
+    document.querySelectorAll('.mob-nav-item').forEach(function(b){ b.classList.remove('active'); });
+    if(el) el.classList.add('active');
+  }
+
+  // Sync desktop nav clicks → mobile nav highlight
+  var _origShowView = showView;
+  showView = function(v) {
+    _origShowView(v);
+    document.querySelectorAll('.mob-nav-item').forEach(function(b){ b.classList.remove('active'); });
+    var mn = document.getElementById('mn-'+v);
+    if(mn) mn.classList.add('active');
+  };
+
+  // Show/hide mob nav after login
+  var _origEnterApp = enterApp;
+  enterApp = function() {
+    _origEnterApp();
+    var nav = document.getElementById('mobNav');
+    if(nav) nav.style.display = '';
+    if(currentRole === 'pc' || currentRole === 'owner') {
+      var pcBtn = document.getElementById('mn-pc');
+      if(pcBtn) pcBtn.style.display = '';
+    }
+    if(READ_ONLY.includes(currentRole)) {
+      var addBtn = document.getElementById('mn-add');
+      if(addBtn) addBtn.style.display = 'none';
+    }
+    if(currentRole === 'pc') {
+      mobGo('pc', document.getElementById('mn-pc'));
+    }
+  };
+
+  // Hide mob nav on logout
+  var _origDoLogout = doLogout;
+  doLogout = function() {
+    _origDoLogout();
+    var nav = document.getElementById('mobNav');
+    if(nav) nav.style.display = 'none';
+  };
 };
 </script>
   <!-- MOBILE BOTTOM NAV -->
